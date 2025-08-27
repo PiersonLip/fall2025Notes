@@ -1,5 +1,5 @@
 \documentclass{article}
-
+\usepackage{tikz}
 \usepackage{darkmode}
 \enabledarkmode
 \author{Pierson}
@@ -19,8 +19,9 @@
     \item divergence them
 \end{list}
 
-
+\setcounter{section}{11}
 \section{Chapter 12: vectors and geo of space}
+\subsection{}
     \begin{list}{-}{}
     \item \[R = line\] dist(x,y) = $ |y - x | $
     \item \[R^2 = Plane\] Orders pairs of (x,y) of real numbers
@@ -36,7 +37,43 @@ Distance D from (0,0) to (x,y)
 \[D^2 = x^2 +y^2\]
 
 Distance D from (0,0,0) to (x,y,z)
-\[\sqrt{x^2+yy^2+z^2}\] 
+\[ D = \sqrt{x^2+yy^2+z^2}\] 
+
+Sphere with center $X_0, Y_0, Z_0$ and radius R has equation:
+
+\[ (X-X_0)^2 + (y-y_0)^2 + (z-z_0)^2 = r^2 \] 
+
+Find equation of the set of points equidistanst from the points a1,4,2, and b 3,3,3
+
+\[AX = \sqrt{(x-1)^2 + (y-4)^2 + (z-2) ^2} \] 
+\[ BX = \sqrt{(x-3)^2 + (y-3)^2 + (z-3) ^2} \]
+
+set AX = BX
+
+Result is a \textbf{plane}
+
+\subsection{vectors and geo of space}
+scaler = magnitude $\leq 0$ \\
+vector = magnitude + direction \\
+
+$\vec{u} = <5,3>$, $\vec{u} =5 \hat{i} +3\hat{j}$ \\
+
+\begin{tikzpicture}
+\node[draw, circle, fill=gray] at (0, 0) (A) {A};
+\node[draw, circle, fill=gray] at (5, 1) (B) {B};
+\draw [->] (A) -- (B);
+\end{tikzpicture}
+
+Scaler multiple 
+
+Changes the length of the vectors, ie, stretches them in a direction. 
+
+Length of k$\vec{v} =|K| * |V|$ 
+
+direction of $k\vec{V} = same as \vec{V} if k > 0$
+
+real numbers work like scaling factors 
+
 
 \section{Chapter 13: vector functions}
 
