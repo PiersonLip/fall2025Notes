@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{tikz}
 \usepackage{darkmode}
+\usepackage{amsmath}
 \enabledarkmode
 \author{Pierson}
 \begin{document}
@@ -61,10 +62,34 @@ $\vec{u} = <5,3>$, $\vec{u} =5 \hat{i} +3\hat{j}$ \\
 \begin{tikzpicture}
 \node[draw, circle, fill=gray] at (0, 0) (A) {A};
 \node[draw, circle, fill=gray] at (5, 1) (B) {B};
-\draw [->] (A) -- (B);
+\draw [thick, ->] (A) -- (B) node[midway, above left] {$\vec{V}$};
 \end{tikzpicture}
 
-Scaler multiple 
+\begin{tikzpicture}
+\node[draw, circle, fill=gray] at (0, 0) (A) {A};
+\node[draw, circle, fill=gray] at (5, 1) (B) {B};
+\node[draw, circle, fill=gray] at (8, .6) (C) {C};
+\draw [thick, ->] (A) -- (B) node[midway,above left] {$\vec{V}$};
+\draw [thick, ->] (B) -- (C) node[midway,above right] {$\vec{U}$}; 
+\draw [thick, ->] (A) -- (C) node[midway,below] {$\vec{V} + \vec{U}$};
+\end{tikzpicture}
+\\
+
+
+\subsubsection{scaler multiple}
+
+\begin{tikzpicture}
+\node at (0, 0) {};
+\node at (5, 1) {};
+\node[] at (-5, -1) (D) {};
+\node[] at (10, 2) (C) {};
+\draw [thick, ->] (A) -- (B) node[midway, above left] {$\vec{V}$};
+\draw [thick, ->] (A) -- (C) node[midway, above left] {$2\vec{V}$};
+
+\draw [thick, ->] (A) -- (D) node[midway, above left] {$-\vec{V}$};
+
+
+\end{tikzpicture}
 
 Changes the length of the vectors, ie, stretches them in a direction. 
 
@@ -72,8 +97,74 @@ Length of k$\vec{v} =|K| * |V|$
 
 direction of $k\vec{V} = same as \vec{V} if k > 0$
 
-real numbers work like scaling factors 
+real numbers work like scaling factors \\
 
+Points = (a,b)
+
+Vector = $<a,b>$
+
+\subsubsection{\textbf{Vectors in $R^3$}}
+
+Extra cords for points and extra comps for vectors
+
+point = (a,b,c)
+
+vector = $<a,b,c>$
+
+\[ if \vec{V} = \vec{P_1P_2}, then |\vec{V}| = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2}\]
+\\
+$P(4, -1, -3) \\
+Q(8, 0 , -5) \\
+R (0, -2, -1)$
+\\
+\\
+$\vec{PQ} = <8-4, 0 --1, -5  --3>$
+
+\[\vec{u} = <3, 1, 3>\]
+\[\vec{v} = <1,3,7>\]
+\[\vec{v} +\vec{v} = <3+1, 1+3, 3+7>\]
+
+\[5 * \vec{v} = <1*5, 3*5, 7*5>\]
+
+\subsubsection{notation}
+
+\[V_n\] set of all n-dim vectors $<V_1, V_2, ..., V_n>$
+
+$V_3$ set of all vectors $<v_1, v_2, v_3>$
+\\ 
+$\hat{i} = <1, 0, 0>$ \\
+$\hat{j} = <0, 1, 0>$ \\
+$\hat{k} = <0, 0, 1>$ \\
+
+unit vector = vector of length 1
+
+$\hat{i}, \hat{j}, \hat{k}$ are unit vectors
+
+find the unit vector that has the same direction as $\vec{b} = 4\hat{i} -2\hat{j} +3\hat{k}$
+
+\[\sqrt{4^2 (-2)^2 + 3^2}\]
+\[\sqrt{16 +4 + 9 }\]
+\[\sqrt{29}\]
+\[\frac{\vec{b}}{|\vec{b}|} = \frac{1}{\sqrt{29}}(4\hat{i} -2\hat{j} +3\hat{k})\] \\
+
+\subsubsection{dot product}
+dot product $\rightarrow$  2 vectors $\rightarrow$ 1 scaler \\
+cross product $\rightarrow$  2 vectors $\rightarrow$ 1 vector \\
+
+\[\vec{a} \cdot \vec{b} = a_1b_1+a_2b_2+a_3b_3\]
+
+\textbf{Properties}
+\[\vec{a} \cdot \vec{a} = \vec{a}^2\]
+
+if $\theta$ is the angle between the vectors $\vec{a}$ and $\vec{b}$, then $\vec{a} \cdot \vec{b} =|\vec{a}||\vec{b}|\cos(\theta)$ \\
+
+follows from the law of cosines \\
+
+$\vec{a}$ and $\vec{b}$ are orthogonal (or perp) if te angle between them is $\theta=\frac{\pi}{2}$ \\
+
+the zero vector $\vec{0}$ is considered orthogonal to all vectors \\
+
+$\vec{a} \cdot \vec{b} = 0 <=> \vec{a} \perp \vec{b}$, orthogonal, form 90$\deg$ angle
 
 \section{Chapter 13: vector functions}
 
