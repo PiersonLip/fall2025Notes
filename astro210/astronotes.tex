@@ -188,13 +188,114 @@ Def: \textit{The square of the sidereal orbital periods of the planets are prop 
 \item telescope is moving along orbital vector around the sun; translation along orbit cannot exceed transit time of light through telescope
 \end{list}
 
-\noindent \textbf{\large Corilois effect: evidence of erath rotation}
+\noindent \textbf{\large Coriolis effect: evidence of earth rotation}
 \begin{list}{-}{}
 \item coriolis acceleration is perp to the direction of motion 
 \item \[\vec{a_{cor}}= s\vec{v} \times \vec{\omega}\]
 \item can be deduced from a pendulum
 \item and in hurricanes!
 \end{list}
+
+
+\section{Orbital Mechanics I}
+\subsection{Newtonian mechanics}
+Parametric vectors\\
+Displacement $\vec{r}(t) = x(t)\hat{i}y(t)\hat{j}+z(t)\hat{k}$ \\
+distance: $r(t) = |\vec{r}(t)| = \sqrt{\vec{r} \cdot \vec{r}}$ \\
+
+\subsection{Newtons laws}
+
+First law
+\begin{list}{-}{}
+\item Isaac newton(1642-1727)
+\item an objects' velocity remains constant unless a net outside force acts upon it
+\item $\vec{v}(t) =\vec{v_0} =const$
+\end{list}
+
+second law
+\begin{list}{-}{}
+\item $\vec{F} = m\vec{a}(t)$
+\item $\vec{F} = \frac{d\vec{p}(t)}{dt}$
+\item $d\vec{v}/dt =\vec{f}/m$
+\item force changes velocity
+\item used a lot in computational math
+\end{list}
+
+third law
+\begin{list}{-}{}
+\item forces come in pairs, equal in magnitude, and opposite in direction
+\end{list}
+
+Newtonian gravity
+\begin{list}{-}{}
+\item a force, grav, exsits between any two objects having mass m and M, prop to the product of their masses mM and inversely proportinal tothe square of the separtation distance r of their centers
+\item for coordinates centered on M:
+\item $\vec{F} = -G\frac{Mm}{|\vec{r}|^2}\hat{r}$
+\end{list}
+
+\subsection{Displacement vector and polar coordinates}
+\begin{list}{-}{}
+\item cartesian coordinates are often written a (x,y,z) in a coordinate system centered on mass M
+\item Axis orientations are chosen so that the planet orbits in the x-y plane
+\item Displacement $\vec{r}(t) =x(t)\hat{i} +y(t)\hat{j}$
+\end{list}
+
+velocity vector and polar coordinates
+\begin{list}{-}{}
+\item unit vectors in polar coordinates vary with $\theta(t)$
+\item \[\frac{d\hat{r}(t)}{dt} = \frac{d\hat{r}(t)}{d\theta} \frac{d\theta(t)}{dt} = \frac{d\theta(t)}{dt} \hat{\theta}(t)\]
+\item .
+\item .
+\item .
+\item \[\vec{v}(t) = v_r\hat{r} +v_t\hat{\theta}\]
+\item two velocity components in polar coords 
+\end{list}
+
+\subsection{Kepler laws: angular momentum}
+\begin{list}{-}{}
+\item .
+\end{list}
+
+\subsection{keplers 2nd law = consv, angular momentum}
+\begin{list}{-}{}
+\item $d\vec{L}/dt=0$
+\item \[\vec{L} =\vec{R} \times\vec{p} = \vec{r}\times m\vec{v}= const\]
+\item \[\rightrightarrows |\vec{v}|=L = mrv_1\]
+\end{list}
+
+\subsection{Keplers Laws}
+\subsubsection{Keplers First Law}
+\begin{list}{-}{}
+\item $\frac{d\vec{v}}{dt} = -\frac{GM}{r_2}\hat{r}$
+\item \[\frac{L}{GMm} \frac{d\vec{v}}{dt} = \frac{d\hat{\theta}}{dt}\]
+\item \[\frac{L}{GMm}\vec{v} = \hat{\theta} + e\hat{j}\]
+\item take dot product of both sides with unit vector $\hat{\theta}, using$
+\item $\hat{j}\cdot\hat{\theta} = \cos\theta$
+\item 
+\end{list}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \pagebreak
 \section{Glossary}
@@ -211,4 +312,6 @@ Def: \textit{The square of the sidereal orbital periods of the planets are prop 
 \item elapsed time of full orbit relative to the fixed stars (inertial ref frame)
 \item This is the one we will want to put in keplers laws
 \end{list}
+
+
 \end{document}
