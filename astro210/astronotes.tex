@@ -1,11 +1,7 @@
 \documentclass{article}
-\usepackage{darkmode}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{hyperref}
 \usepackage{gensymb}
 \usepackage{tikz}
-\usetikzlibrary{calc,decorations.pathreplacing}
+\usetikzlibrary{calc,decorations.pathreplacing, arrows.meta, positioning}
 
 \enabledarkmode
 \title{Astro Notes}
@@ -17,6 +13,7 @@
 
 \maketitle
 
+\setcounter{section}{-1}
 \section{Class overview}
 Office hours tues and thurs 11-12 astro 237
 
@@ -458,14 +455,181 @@ velocity vector and polar coordinates
 
 \subsection{Hill radius}
 \begin{list}{-}{}
-\item tidal forces of sun on earth-moon systems means that there is a maximum orbital distance for the moon, if it is to remain bound to the earth
+\item Tidal forces of sun on earth-moon systems means that there is a maximum orbital distance for the moon, if it is to remain bound to the earth
 \end{list}
 
+\subsection{Plane of lunar orbit}
+\begin{list}{-}{}
+\item Inclined by 5.1$\degree$
+\item the moon is near the cele equator so the moon is above the horizon about 50\% of the time for most observers on earth
+\item moves north and south in the sky in addition to its motion around the earth. greatest dec is $23.5+5.1 = 28.6$ and min is $-23.5 -5.1 = -28.6$ 
+\item causes eclipses to be retrograde
+\end{list}
 
+\subsection{Tidal forces: earth vs moon}
+\begin{list}{-}{}
+\item earth exerts greater tidal forces on moon than the moon does on the earth.
+\item \[\Delta g_{moon \rightarrow earth } = \frac{\Delta F}{m} \propto \frac{M_{Moon}{R_{Earth}}} {r^3}\]
+\item \[\Delta g_{earth \rightarrow moon } = \propto \frac{M_{Earth}{R_{Moon}}} {r^3}\]
+\item  \[\frac{\Delta g_{moon \rightarrow earth }}{\Delta g_{earth \rightarrow moon }} \frac{M_{moon}R_{earth}}{M_{earth} r_{moon}} \approx \frac{1}{20}\]
+\end{list}
 
+\subsection{lunar librations}
+\begin{list}{-}{}
+\item E-w and n-s nodding motions of the moon seen from earth, caused by parallax
+\item tidal locking is not perfect, so the libration happens in longitude 
+\item because the rotation axis is inclined there is libration in lat 
+\end{list}
 
+\section{Waves}
+\subsection{Spectra (How do we know what the universe if made out of?)}
+\noindent \textbf{\large Multi-messenger astronomy}
+\begin{list}{-}{}
+\item Electromagnetic radiation
+\item cosmic rays
+\item meteorites
+\item neutrinos
+\item gravitational waves
+\end{list}
 
+\subsection{Atoms and spectra}
+Hydrogen gas exhibits emission lines at discrete visible wavelengths, fit by empirical relation by Balmer in 1885 
+\[\frac{1}{\lambda} = R(1/4 -1/n^2)\]
+\[n = integer > 2\]
+\subsection{Bohrs model}
 
+% Preamble needs:
+% \usepackage{tikz}
+% \usetikzlibrary{arrows.meta,calc,positioning}
+\begin{center}
+  
+  \begin{tikzpicture}[x=1cm,y=1cm,>=Latex]
+    %---- Style shortcuts
+    \tikzset{
+      orbit/.style={thin},
+      labelsmall/.style={font=\small},
+      info/.style={draw=white!70!black, rounded corners=2pt, very thick,
+                   inner sep=6pt, align=left},
+      title/.style={font=\bfseries\itshape, text=white!75!black},
+    }
+  
+    %---- Radii
+    \def\rOne{1}
+    \def\rTwo{3.0}
+    \def\rThree{4.6}
+  
+    %---- Nucleus at origin
+    \fill (0,0) circle (0.05); % nucleus dot
+    \node[white!70!black, labelsmall] at (-0.45,0.35) {$+Ze$};
+    \node[labelsmall, below=2pt] at (0,-0.25) {Nucleus};
+  
+    %---- Orbits
+    \draw[orbit] (0,0) circle (\rOne);
+    \draw[orbit] (0,0) circle (\rTwo);
+    \draw[orbit] (0,0) circle (\rThree);
+  
+    %---- n labels
+    \node[labelsmall] at ( {1*\rOne}, {1*\rOne} ) {$n=1$};
+    \node[labelsmall] at ( {.8*\rTwo}, {.8*\rTwo} ) {$n=2$};
+    \node[labelsmall] at ( {.8*\rThree}, {.8*\rThree} ) {$n=3$};
+  
+    %---- Electron at the top of the outer orbit
+    \coordinate (etop) at (0,\rThree);
+    \fill[black] (etop) circle (0.06);
+    \node[white!90!black, above right=-2pt and 2pt of etop, font=\bfseries\itshape] {$e^{-}$};
+  
+    % Tangential (yellow) arrow (e.g., velocity)
+    \draw[-{Latex[length=3mm]},line width=1.1pt,orange!85!yellow]
+          ($(etop)+(0,0)$) -- ++(-1.8,0);
+  
+    %---- Coulomb force arrow (blue, toward nucleus)
+    \draw[-{Latex[length=4mm]},line width=2pt,white!70!black]
+          (etop) -- (0,0);
+    \node[white!90!black, labelsmall] at (-1.1,1.9) {Coulomb force};
+  
+    %---- Axis/scale tick at bottom
+    \draw[line width=0.5pt] (0,-\rThree-0.6) -- ++(0.9,0);
+    \draw[line width=0.5pt] (0,-\rThree-0.6-0.15) -- (0,-\rThree-0.6+0.15);
+    \draw[line width=0.5pt] (0.9,-\rThree-0.6-0.15) -- (0.9,-\rThree-0.6+0.15);
+    \node[labelsmall] at (0.45,-\rThree-0.95) {$\dfrac{1\,\text{\AA}}{Z}$};
+  
+    %---- Electron info box (top-right)
+    \node[info,anchor=west,minimum width=5.2cm] (ebox) at (5.3,3.4) {%
+      {\title Electron:}\\[2pt]
+      Mass $m_e \sim m_p/1836$\\
+      Electric charge: $-e$
+    };
+    % Leader to electron
+    % \draw[white!70!black, very thick] (ebox.west|-etop) -- ++(-1.0,0);
+  
+    %---- Nucleus info box (right-middle)
+    \node[info,anchor=west,minimum width=7.2cm] (nbox) at (4.1,0.2) {%
+      {\title Nucleus:}\\[2pt]
+      $Z$ protons: mass $m_p$\\
+      $(A{-}Z)$ neutrons; mass $m_n \sim m_p$\\
+      mass number $A$;\\
+      electric charge: $+Ze$.
+    };
+    % Leader to center
+    \draw[white!70!black, very thick] (nbox.west) -- ++(0,0);
+  
+  \end{tikzpicture}
+  
+  
+\end{center}
+
+Because orbital angular momentum is quantized, so is $r_n$ and $E_n$ $\rightarrow$ discrete orbtial levels
+
+\subsection{Atomic transition processes}
+
+\begin{list}{-}{}
+\item Transitions to free unbounded states behave similarly, however, they have diff names
+\item ionization and recombination
+\item photoionization (electron is knocked free). photon knocks electron free
+\item collisional ionization (electron becomes free). any other particle knocks electron free
+\item a positively charged ion may combine with a free leectron, and atom emits radiation (photons) as the electrons drop to lower levels. called \textbf{recombination}
+\end{list}
+
+\subsection{Kirchoff's  Laws}
+\begin{list}{-}{}
+\item blackbody
+\item emission lines
+\item absorption lines
+\end{list}
+
+\subsection{Tempature affects internal states of atoms and molecules}
+\begin{list}{-}{}
+\item temp of gas dermines the kinetic energies of the colliding particles
+\item and the incoming photons
+\item we observe outgoing photons
+\end{list}
+
+\subsection{Temperature vs velocity}
+\begin{list}{-}{}
+\item Thermal motions: emitted or absorbed photos inherent their energy from the doppler velocites of the thermal motions of particles/atoms
+\item equilibrium distribution of particles speeds in an ideal gas is given by the Maxwell-Boltzmann distribution
+\end{list}
+
+\subsection{mean free path and opt depth}
+
+\begin{list}{-}{}
+\item mean free path $x_m$. Distance which intensity decrease by a factor of 1/e
+\item optical depth $\tau = x/x_m$. Thickness of slab in units of mean free path $x_m$
+\item column density, $N(x)$: total number of absorbing particle sin a column with cross-section area 1 $m^2$ and length $x$
+\end{list}
+
+\section{Telescopes}
+\subsection{photoeletric effect}
+\begin{list}{-}{}
+\item Photoemission - emisison of a electron from a material in response to a incident photon
+\begin{list}{-}{}
+\item photoemissive material (underlying material)
+\item work function (min energy requried to produce light)
+\item photoeletric effect (photoemission from atoms in certain materials)
+\item photoelectron (release electron)
+\end{list}
+\item particle energy of EM radiation 
+\end{list}
 
 
 
@@ -492,8 +656,9 @@ velocity vector and polar coordinates
 \textbf{\large Sidereal Period} 
 \begin{list}{-}{}
 \item elapsed time of full orbit relative to the fixed stars (inertial ref frame)
-\item This is the one we will want to put in keplers laws
+\item This is the one we will want to put in Keplers laws
 \end{list}
+
 
 
 \end{document}
