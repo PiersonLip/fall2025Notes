@@ -1,8 +1,13 @@
 \documentclass{article}
 \usepackage{gensymb}
 \usepackage{tikz}
+\usepackage{darkmode}
+\usepackage{amsmath}
+\usepackage{colonequals}
+\usepackage{amssymb}
+\usepackage[colorlinks]{hyperref}
 \usetikzlibrary{calc,decorations.pathreplacing, arrows.meta, positioning}
-
+\sloppy
 \enabledarkmode
 \title{Astro Notes}
 \author{Pierson Lipschultz}
@@ -621,7 +626,7 @@ Because orbital angular momentum is quantized, so is $r_n$ and $E_n$ $\rightarro
 \section{Telescopes}
 \subsection{photoeletric effect}
 \begin{list}{-}{}
-\item Photoemission - emisison of a electron from a material in response to a incident photon
+\item Photoemission emisison of a electron from a material in response to a incident photon
 \begin{list}{-}{}
 \item photoemissive material (underlying material)
 \item work function (min energy requried to produce light)
@@ -631,7 +636,66 @@ Because orbital angular momentum is quantized, so is $r_n$ and $E_n$ $\rightarro
 \item particle energy of EM radiation 
 \end{list}
 
+\subsection{Sun}
+\subsubsection{Chromosphere}
+\begin{list}{-}{}
+\item Very sparse layer of gas above the photosphere
+\item very hot gas, emission spectra by Kirchhoff laws 
+\item easily seen during total eclipse or with an H\(\alpha\) filter
+\end{list}
+\subsubsection{Corona}\begin{list}{-}{}
+\item Low density out layer of suns atmosphere. Most easily visible during total eclipse
+\item T = \(2\times10^6\)
+\item Emission lines from highly ionized atoms
+\item x-ray emission from thermal Bremsstrahlung (not black body)
+\item Optical continuum is originally from photosphere 
+\item scattered by free electrons in coronal plasma 
+\item coronal streamers show how plasma follows magnetic field lines
+\end{list}
+\subsubsection{Solar Wind}
+\begin{list}{-}{}
+\item Bunch of protons and other various particles ejected from the sun
+\item Speed of protons in the corona
+\item \[V_{rms} = \frac{3kT}{m_p}^{1/2} \approx 160km/s\]
+\item Escape speed as function of distance 
+\item \[\frac{GM_\odot}{r}^{1/2} \approx 620 km/s\]
+\item Sun produces a solar wind with \(v = 400 km/s\), density\(p ~ 10^{-21} kgm^{-3}\) earth
+\item \[\Delta M = (4\pi r^2\Delta r) \rho\]
+\item therefore mass flux through shell
+\item \[\frac{dM}{dt} = 4\pi r^2 \frac{dr}{dt} \rho\]
+\item \[\dot{M} = 4\pi r^2 v \rho\]
+\item \[\dot{M} \sim 10^8 kgs^{-1}; t_m \sim 10^{14}\]
+\item Maybe try this myself with various sizes of stars?? Seems easy to verify large stars ejecting large amounts of wind
+\end{list}
 
+\subsubsection{Magnetic Fields}
+\begin{list}{-}{}
+\item Lorentz force \(\vec{F} = q\vec{v}\times\vec{B}\)
+\item Charged particles follow curved helical paths
+\item Magnetic field energy
+\item \[P_B = \varepsilon_B = \frac{B^2}{2\mu_0}\]
+\end{list}
+
+\subsubsection{Sunspots}
+\begin{list}{-}{}
+\item Cooler than surroundings because the magnetic field is enhanced in the spot
+\item Pressure due to a magnetic field
+\item \[P_B = 4\times10^5 Nm^{-2} (\frac{B}{1T})^2\]
+\item pressure due to ideal gas
+\item \[P_{gas} = nkT\]
+\end{list}
+\noindent \textbf{\large Pressure balance in sunspots}
+\begin{list}{-}{}
+\item gas and magnetic pressure inside sunspot must equal surrounding gas pressure 
+\item \[\frac{\rho kT_s}{m_p} + \frac{B^2}{2\mu_0} = \frac{\rho kT_P}{m_p}\]
+\item \(B \approx .1 T\)
+\end{list}
+
+\noindent \textbf{\large Sunspot Cycle}
+\begin{list}{-}{}
+\item Star near 30$\degree$ N/S, migrate towards solar equator 
+\item more numerous every 11 years 
+\end{list}
 
 
 
