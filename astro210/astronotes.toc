@@ -45,4 +45,23 @@
 \contentsline {subsubsection}{\numberline {6.2.3}Solar Wind}{17}{subsubsection.6.2.3}%
 \contentsline {subsubsection}{\numberline {6.2.4}Magnetic Fields}{18}{subsubsection.6.2.4}%
 \contentsline {subsubsection}{\numberline {6.2.5}Sunspots}{18}{subsubsection.6.2.5}%
-\contentsline {section}{\numberline {7}Glossary}{19}{section.7}%
+\contentsline {section}{\numberline {10}The planets}{19}{section.10}%
+\contentsline {subsection}{\numberline {10.1}Mecury}{19}{subsection.10.1}%
+\contentsline {subsection}{\numberline {10.2}Venus}{19}{subsection.10.2}%
+\contentsline {subsection}{\numberline {10.3}Earth}{19}{subsection.10.3}%
+\contentsline {subsection}{\numberline {10.4}Mars}{19}{subsection.10.4}%
+\contentsline {subsection}{\numberline {10.5}Jupiter and Saturn}{20}{subsection.10.5}%
+\contentsline {subsubsection}{\numberline {10.5.1}energy deficit for jupiter}{20}{subsubsection.10.5.1}%
+\contentsline {subsection}{\numberline {10.6}Fast rotation}{20}{subsection.10.6}%
+\contentsline {subsection}{\numberline {10.7}rings}{20}{subsection.10.7}%
+\contentsline {section}{\numberline {12}Solar system in perspective}{20}{section.12}%
+\contentsline {subsection}{\numberline {12.1}Solar system config}{20}{subsection.12.1}%
+\contentsline {subsection}{\numberline {12.2}Porotstellar Neb}{21}{subsection.12.2}%
+\contentsline {subsection}{\numberline {12.3}Compartive planetology}{21}{subsection.12.3}%
+\contentsline {subsection}{\numberline {12.4}Origin of the solar system}{21}{subsection.12.4}%
+\contentsline {subsection}{\numberline {12.5}Dynamic solar system}{21}{subsection.12.5}%
+\contentsline {subsection}{\numberline {12.6}Detecting exoplanets}{21}{subsection.12.6}%
+\contentsline {subsubsection}{\numberline {12.6.1}Transit}{21}{subsubsection.12.6.1}%
+\contentsline {subsubsection}{\numberline {12.6.2}Indirect}{21}{subsubsection.12.6.2}%
+\contentsline {subsubsection}{\numberline {12.6.3}Doppler effect}{22}{subsubsection.12.6.3}%
+\contentsline {section}{\numberline {13}Glossary}{23}{section.13}%
