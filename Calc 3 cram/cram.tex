@@ -1,0 +1,114 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Article %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{empheq}
+\usepackage{mdframed}
+\usepackage{booktabs}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{psfrag}
+\usepackage{pgfplots}
+\usepackage{bm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Page Setting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{a4paper}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define some useful colors %%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define an orangebox command %%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\orangebox[1]{\fcolorbox{ocre}{mygray}{\hspace{1em}#1\hspace{1em}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% English Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{mytheoremstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\newtheoremstyle{myproblemstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowGreen,linecolor=deepGreen,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{theorem}{Theorem}[section]
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowBlue,linecolor=deepBlue,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{definition}{Definition}[section]
+\theoremstyle{myproblemstyle}
+\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{problem}{Problem}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Plotting Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepgfplotslibrary{colorbrewer}
+\pgfplotsset{width=8cm,compat=1.9}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Cram}
+\author{pierson}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+    \maketitle
+    
+
+\section{Polar}
+\[x \rightarrow r\cos(\theta)\]
+\[y \rightarrow r\sin(\theta)\]
+\[da \rightarrow r dr d\theta \]
+\[x^2 + y^2 = r^2\]
+
+Converting Cords
+\[x=\rho \sin\varphi \cos\theta\]
+\[x=\rho \sin\varphi \sin\theta\]
+\[z = \rho \cos \varphi\]
+
+\[\rho^2 = x^2 + y^2 +z^2\]
+
+To cylindrical \dots
+\[r = \sqrt{x^2 + y^2}\]
+\[\theta = \arctan(\frac{y}{x})\]
+\[z = z\]
+
+To spherical \dots
+
+\[r^2 = x^2 + y^2 +z^2\]
+\[\theta = \arctan(\frac{y}{x})\]
+\[\theta = \arccos(\frac{z}{\rho})\]
+
+\section{Vector fields and such}
+
+\[\text{A curve } C \text{ given by\dots} \quad r = \langle x(t), y(t) \rangle, \quad a \leq t \leq b \]
+
+\[\int_C \sqrt{1+9xy} ds, \qquad C = r(t) = \langle t, t^3\rangle, \quad 0 \leq t \leq 1 \]
+
+\[\int_{0}^{1} \sqrt{1+9t^4}\sqrt{1+9t^4} dr, \quad r(t)' = \langle 1,3t^2\rangle, \quad r(t)' = \sqrt{1+9t^4}\]
+
+\[\int_{1}^{4} 1+9t^4\]
+\[t+\frac{9t^5}{5}\big|_{0}^1\]
+\[1+\frac{9}{5}\]
+
+
+\subsection{Greens theorom}
+\[\int_c Pdx + Qdy = \int \int_D \frac{\partial Q}{\partial x} \frac{\partial P}{\partial Y} \mathrm{dxdy}\]
+Example \dots
+\[\int_{0}^{1}xy +y^2 dxdy \rightarrow \int_{0}^{1}\int_{0}^{1} \frac{\partial }{\partial x}x^2 - \frac{\partial }{\partial y}xy \mathrm{ dxdy}\]
+
+\[\int_{0}^{1}\int_{0}^{1} 2x - x \mathrm{ dxdy} \]
+\[\int_{0}^{1}\int_{0}^{1} x \mathrm{ dxdy} \]
+\[\int_{0}^{1} 1/2 \mathrm{dy} \]
+\[= 1/2  \]
+
+
+\end{document}
+
