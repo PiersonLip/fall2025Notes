@@ -4,3 +4,8 @@
 
 astronotes.out
 astronotes.toc
+*.glg
+*.glo 
+*.gls 
+*.ist
+*.toc
