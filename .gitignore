@@ -1,9 +1,6 @@
 *.gz
 *.aux
 *.log
-
-astronotes.out
-astronotes.toc
 *.glg
 *.glo 
 *.gls 
