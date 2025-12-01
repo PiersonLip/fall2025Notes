@@ -1,19 +1,186 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Define Article %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass{article}
-\usepackage{gensymb}
-\usepackage{tikz}
-\usepackage{darkmode}
-\usepackage{amsmath}
-\usepackage{colonequals}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Using Packages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{geometry}
+\usepackage{graphicx}
 \usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{empheq}
+\usepackage{mdframed}
+\usepackage{booktabs}
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{color}
+% \usepackage{psfrag}
+\usepackage{pgfplots}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage[most]{tcolorbox}
+\usepackage{xparse}
+\usepackage{darkmode}
+\usepackage[stable]{footmisc}
+\usepackage{gensymb}
+\usepackage{siunitx}
 \usepackage[colorlinks]{hyperref}
-\usepackage[automake]{glossaries-extra}
-\usetikzlibrary{calc,decorations.pathreplacing, arrows.meta, positioning}
+\usepackage{fancyhdr}
 
-\sloppy
-\enabledarkmode
 
-\title{Astro Notes}
+% --- Glossaries + TikZ externalization friendly setup ---
+\makeatletter
+\@ifundefined{pgfexternalrealjob}{%
+  % Main document run: full glossaries with automake
+  \usepackage[automake]{glossaries-extra}%
+}{%
+  % External TikZ runs: minimal glossaries that don't try to build/read files
+  \usepackage[nostyles]{glossaries-extra}%
+  % Pretend glossary files don't exist, so no "use \makeglossaries" error
+  \def\glsifexists#1#2#3{#3}%
+}
+\makeatother
+
+\usetikzlibrary{calc,decorations.pathreplacing, arrows.meta, positioning, external}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Other Settings
+% \enabledarkmode
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Page Setting %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\geometry{a4paper}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define some useful colors %%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{ocre}{RGB}{243,102,25}
+\definecolor{mygray}{RGB}{243,243,244}
+\definecolor{deepGreen}{RGB}{26,111,0}
+\definecolor{shallowGreen}{RGB}{235,255,255}
+\definecolor{deepBlue}{RGB}{61,124,222}
+\definecolor{shallowBlue}{RGB}{235,249,255}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%% Define an orangebox command %%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\orangebox[1]{\fcolorbox{ocre}{mygray}{\hspace{1em}#1\hspace{1em}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% English Environments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Theorem Macro %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{mytheoremstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\newtheoremstyle{myproblemstyle}{3pt}{3pt}{\normalfont}{0cm}{\rmfamily\bfseries}{}{1em}{{\color{black}\thmname{#1}~\thmnumber{#2}}\thmnote{\,--\,#3}}
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowGreen,linecolor=deepGreen,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{theorem}{Theorem}[section]
+\theoremstyle{mytheoremstyle}
+\newmdtheoremenv[linewidth=1pt,backgroundcolor=shallowBlue,linecolor=deepBlue,leftmargin=0pt,innerleftmargin=20pt,innerrightmargin=20pt,]{definition}{Definition}[section]
+\theoremstyle{myproblemstyle}
+\newmdtheoremenv[linecolor=black,leftmargin=0pt,innerleftmargin=10pt,innerrightmargin=10pt,]{problem}{Problem}[section]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\theoremstyle{myproblemstyle}
+\newmdtheoremenv[
+  linecolor=black,
+  leftmargin=0pt,
+  innerleftmargin=10pt,
+  innerrightmargin=10pt,
+]{example}{Example}[section]
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%% Equation Macro %%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newmdenv[
+        linewidth=1pt,
+                backgroundcolor=black!85,
+                fontcolor = white!90,
+                linecolor=white!100,
+                leftmargin=0pt,
+                innerleftmargin=20pt,
+                innerrightmargin=20pt,]{eqbox}
+
+\ExplSyntaxOn
+\seq_new:N \g_piers_eq_seq
+
+% Store (label, title, equation-body) for later printing
+\cs_new_protected:Npn \piers_add_eq:nnn #1#2#3
+  {
+    \seq_gput_right:Nn \g_piers_eq_seq
+      { \piers_eq_entry:nnn {#1}{#2}{#3} }
+  }
+
+% How each equation is printed in the final summary
+\cs_new_protected:Npn \piers_eq_entry:nnn #1#2#3
+  {
+    \par\noindent
+    \begin{minipage}{0.72\linewidth}
+      \begin{equation*}
+        #3
+      \end{equation*}
+    \end{minipage}
+    \begin{minipage}{0.9\linewidth}
+      \raggedright
+      \qquad\eqref{#1}\;(\textit{#2})
+    \end{minipage}
+
+    \par\bigskip
+  }
+
+% Environment: \begin{eqboxed}{label}{Title}{Description} <equation> \end{eqboxed}
+\NewDocumentEnvironment{eqboxed}{ m m m +b }
+  {
+    % begin code: mdframed-based, no TikZ
+    \begin{eqbox}
+      {\bfseries #2}\par\vspace{0.4em}%
+      \begin{equation}
+        \label{#1}
+        #4
+      \end{equation}
+      #3
+    \end{eqbox}
+    % store equation body for later
+    \piers_add_eq:nnn{#1}{#2}{#4}
+  }
+  {
+    % end code
+  }
+
+% Command to print all stored equations at the end
+\NewDocumentCommand{\PrintAllEquations}{}
+  {
+    \section{Equations}
+    \hrule
+    \vspace{.5cm}
+    \seq_use:Nn \g_piers_eq_seq { }
+  }
+\ExplSyntaxOff
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Plotting Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepgfplotslibrary{colorbrewer}
+\pgfplotsset{width=8cm,compat=1.9}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Title & Author %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{Notes}
 \author{Pierson Lipschultz}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%% Glossary entries %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newglossaryentry{test}{
+name={test},
+description={test}
+}
+% Only do the real glossaries work in the main document run
+\tikzifexternalizing{}{%
+  \makeglossaries
+}
+
+\tikzexternalize[prefix=tikz-cache/]
 
 
 
@@ -23,9 +190,19 @@ description = {Stars follwing a path away from a galaxy}
 }
 
 \makeglossaries
-
+\enabledarkmode
 \begin{document}
 
+  \pagestyle{fancy}
+
+  \fancyhf{}
+  \fancyfoot[L]{\nouppercase{\leftmark}} % "1 INTRODUCTION"
+  \fancyfoot[R]{\thepage}% page number on right
+
+  % Remove header rule and add footer rule instead
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+  \renewcommand{\sectionmark}[1]{\markboth{#1}{}}
 
 \tableofcontents
 
@@ -947,21 +1124,118 @@ If you repeat the previous equation but for stars, you find a \(1\) in \(10^8\) 
 \item They are inelastic, the kinetic energy is converted into funny motions of the stars themselves
 \end{list}
 
+
 \pagebreak
+\section{Cosmology}
+\hrule
+\vspace{.5cm}
+\subsection{CMB}
+\begin{list}{-}{}
+\item \(ct \rightrightarrows\) theoretical size of the universe
+\item Does not account for expansion of the uni while the light is travelling
+\item `Surface of last scattering', point where the universe becomes opaque 
+\end{list}
+
+\subsubsection{olbers paradox}
+\begin{list}{-}{}
+\item We do not see a galaxy everywhere we look 
+\item this is because the universe is finite, not infinitly large 
+\end{list}
+
+\subsubsection{Equivalence principle}
+
+
+\begin{eqboxed}{grav-mass}{Gravitational Mass}
+{}
+F_{grav} = \frac{-GM_gm_g}{r^2}
+\end{eqboxed}
+\begin{eqboxed}{inert-mass}{Interial mass}
+{}
+a = \frac{F}{m_i}
+\end{eqboxed}
+
+\begin{eqboxed}{equiv-princp}{Equivalence Principle}
+{}
+m_g = m_i
+\end{eqboxed}
+
+\subsubsection{Einstein v Newton}
+\begin{list}{-}{}
+\item In a small volume of space the downward pull of gravity cannot be distinguished from an upward acceleration of the observer
+\end{list}
+
+\subsection{General relativity}
+\begin{list}{-}{}
+\item Space and time bind together to form curved spacetime 
+\item `free-fall' is motion in a straight line in 4d spacetime (this is grav acceleration)
+\item Matter (Mass-energy) tells spacetime how to curve 
+\item Curved spacetime tells matter how to move
+\end{list}
+
+\subsubsection{Predictions of GR}
+\begin{list}{-}{}
+\item Gravtional field sdeflect light (grav lensing)
+\item more accurate orbit for Mercury
+\item grav fields slow clocks 
+\item moving objects will produce gravitational waves
+\end{list}
+\begin{center} 
+  \huge
+  \begin{tikzpicture}
+  \begin{axis}[
+  scale = 1.4,
+  legend pos=outer north east,
+  title=Gravity in spacetime,
+  axis lines = box,
+  colormap/cool,
+  xlabel = $x$,
+  ylabel = $y$,
+  variable = t,
+  trig format plots = rad,
+  % restrict z to domain = -100:0,
+  ]
+  \addplot3[
+    surf,
+    samples=30,
+    domain = -3:3,       % x bounds
+    y domain = -3:3 
+  ]
+  {-1/(x^2 + .3) * 1/(y^2 +.3)};
+  \end{axis}
+  \end{tikzpicture}
+\end{center}
+\pagebreak
+\subsection{Surface of spacetime}
+\begin{list}{-}{}
+\item How do we know the curvature and angles?
+\item If we draw a triangle what do the angles add up to?
+
+\end{list}
+\begin{eqboxed}{curv-and-angles}{Curvature and Angles of a triangle in 4d space}
+{}
+\alpha + \beta + \gamma = \pi \frac{\kappa A}{r^2_{c,0}}
+\end{eqboxed}
+
+\begin{eqboxed}{newt-friedmann-equation}{Newtonian Friedmann Equation}
+{Newtonian version of Friedman equation}
+\frac{\dot{a}}{a}^2 = \frac{8\pi G }{3} \rho(t + 2\frac{k}{r^2} \frac{1}{a^2(t)})
+\end{eqboxed}
+
+\begin{eqboxed}{rel-friedmann-equation}{Relativistic Friedmann equation}
+{}
+\left(\frac{\dot{a}}{a}\right)^2 =
+\frac{8\pi G}{3c^2}
+- \frac{\kappa c^2}{r_{c,0}^2} \frac{1}{a^2(t)}
++ \frac{\alpha}{3}
+\end{eqboxed}
+
+
+
+\pagebreak
+\PrintAllEquations
 \printglossaries
 
-\section{Glossary}
 
-\textbf{\large Synodic period }
 
-\begin{list}{-}{}
-\item time elapsed between success conjunctions or oppositions
-\item this is the period we observe from earth, which is moving
-\end{list}
-\noindent
-\textbf{\large Sidereal Period} 
-\begin{list}{-}{}
-\item elapsed time of full orbit relative to the fixed stars (inertial ref frame)
-\item This is the one we will want to put in Keplers laws
-\end{list}
+
 \end{document}
