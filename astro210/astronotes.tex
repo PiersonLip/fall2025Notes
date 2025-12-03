@@ -94,12 +94,13 @@
 
 \newmdenv[
         linewidth=1pt,
-                backgroundcolor=black!85,
-                fontcolor = white!90,
-                linecolor=white!100,
-                leftmargin=0pt,
-                innerleftmargin=20pt,
-                innerrightmargin=20pt,]{eqbox}
+        backgroundcolor=black!85,
+        fontcolor = white!90,
+        linecolor=white!100,
+        leftmargin=0pt,
+        innerleftmargin=20pt,
+        innerrightmargin=20pt,]
+        {eqbox}
 
 \ExplSyntaxOn
 \seq_new:N \g_piers_eq_seq
@@ -1210,6 +1211,8 @@ m_g = m_i
   \end{tikzpicture}
 \end{center}
 \pagebreak
+
+
 \subsection{Surface of spacetime}
 \begin{list}{-}{}
 \item How do we know the curvature and angles?
@@ -1227,12 +1230,117 @@ m_g = m_i
 \end{eqboxed}
 
 \begin{eqboxed}{rel-friedmann-equation}{Relativistic Friedmann equation}
-{}
+{where \(\kappa\) is curvature parameter} 
 \left(\frac{\dot{a}}{a}\right)^2 =
 \frac{8\pi G}{3c^2}
 - \frac{\kappa c^2}{r_{c,0}^2} \frac{1}{a^2(t)}
 + \frac{\alpha}{3}
 \end{eqboxed}
+
+Currently, \(\dot{a} > 0\), thus the universe is expanding
+
+\subsubsection{Measuring curvature}
+\begin{list}{-}{}
+\item Look at angular diam vs distance 
+\item We look at something which we know the size of, a `standard ruler'
+\item if flat\dots \(\Rightarrow \alpha = \frac{D}{d}\)
+\item Can't use galaxies, non standardized size  
+\item Use sound saves before recombination 
+\begin{list}{-}{}
+\item Use sound waves! \(t< 380000 yr \)
+\item Sound waves in early fluid like plasma in universe 
+\item wave equation for sound waves relates wavelength to the properties of the gas
+\end{list}
+\item Apply the sound wave logic to the CMB
+\item the reason that the CMB is not homogeneous is because of the sound waves traveling through the plasma in early universe
+\item If universe was curved, the light traveling from the CMB would take a different path, resulting in a different angular resolution
+\end{list}
+\subsubsection{Predicting angular scale distribution in CMB from sound waves}
+\begin{list}{-}{}
+\item large fluctuations are caused by patches of varying temperature
+\item small fluctuations are from
+\item Look at how CMB is `distorted' from the sound waves
+\item Then infer wavelength of soundwaves
+\item Then apply previous logic for measuring angular res and comparing it to known wavelength  
+\end{list}
+
+\subsection{Density of the universe}
+\begin{list}{-}{}
+\item \[\Omega_m = \frac{M/V}{\rho_c}\]
+\item Matter \dots
+\item \[\Omega_m \sim .3\]
+\item Radiation \dots
+\item \[\Omega_{rad} \sim .00007\]
+\item Something else \dots 
+\item \[\Omega_{rest} \sim .7\]
+\item Because the universe is flat we know that 
+\item \[\Omega_{m} + \Omega_{rad} + \Omega_{res} \sim 1 \]
+\end{list}
+
+\subsubsection{Energy density components}
+\begin{list}{-}{}
+\item Looking for a solution for \(a(t)\)
+\item Wavelength of a photon scales with the size of the universe
+\item Lambda cosmological constant 
+\item \[\Omega_\Lambda \sim .7\]
+\item Non-Relativistic particles: 
+\item \[\Omega_{m,0} \sim .3\]
+\item \[\Omega_(bary,0) \sim .04\]
+\item Relativistic particles 
+\item \[\Omega_{r,0} = \Omega_{cmb,0} + \Omega_{v,0} \sim 8.4 \times 10^{-5}\]
+\end{list}
+
+\begin{eqboxed}{nonrelparticles}{Behavior of nonrelatvistic partciles}
+{If matter is conserved}
+n(t) \propto V^{-1}(t)\propto a^{-3}(t)
+\end{eqboxed}
+
+\subsubsection{Cosmological redshift}
+\begin{eqboxed}{redshift}{Redshift Z}
+{}
+Z = \frac{\lambda_0 - \lambda_e}{\lambda_e}
+\end{eqboxed}
+
+If we use \ref{redshift} combined with expansion of the universe \dots  
+\[1+Z = \frac{1}{a(t)}\]
+
+\subsubsection{Universe at different stages}
+\begin{list}{-}{}
+\item Solve \ref{rel-friedmann-equation} for different \(\Omega\)s
+\item We find that all are decelerating, except for \(\Omega_\Lambda\) (Dark Energy)
+\end{list}
+
+\subsubsection{Standard candles for expanding universe}
+
+\begin{eqboxed}{eq:flux}{Flux}
+{}
+L = \frac{L}{4\pi r^2}
+\end{eqboxed}
+
+\begin{eqboxed}{eq:photonenergy}{Photon Energy}
+{}
+\epsilon = \frac{hc}{\lambda_e}; \quad \epsilon_0 = \frac{hc}{\lambda_0}
+\end{eqboxed}
+
+
+\begin{list}{-}{}
+\item One can combine \ref{redshift} and \refeq{eq:photonenergy}
+\item We can use type 1a SN as a standard candle
+\item Plot the redshift and distance, see what expected path it lies on (based on DE DM content)
+\end{list}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

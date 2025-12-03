@@ -85,5 +85,12 @@
 \contentsline {subsection}{\numberline {24.2}General relativity}{25}{subsection.24.2}%
 \contentsline {subsubsection}{\numberline {24.2.1}Predictions of GR}{26}{subsubsection.24.2.1}%
 \contentsline {subsection}{\numberline {24.3}Surface of spacetime}{27}{subsection.24.3}%
-\contentsline {section}{\numberline {25}Equations}{28}{section.25}%
-\contentsline {section}{Glossary}{29}{section*.2}%
+\contentsline {subsubsection}{\numberline {24.3.1}Measuring curvature}{27}{subsubsection.24.3.1}%
+\contentsline {subsubsection}{\numberline {24.3.2}Predicting angular scale distribution in CMB from sound waves}{28}{subsubsection.24.3.2}%
+\contentsline {subsection}{\numberline {24.4}Density of the universe}{28}{subsection.24.4}%
+\contentsline {subsubsection}{\numberline {24.4.1}Energy density components}{28}{subsubsection.24.4.1}%
+\contentsline {subsubsection}{\numberline {24.4.2}Cosmological redshift}{29}{subsubsection.24.4.2}%
+\contentsline {subsubsection}{\numberline {24.4.3}Universe at different stages}{29}{subsubsection.24.4.3}%
+\contentsline {subsubsection}{\numberline {24.4.4}Standard candles for expanding universe}{29}{subsubsection.24.4.4}%
+\contentsline {section}{\numberline {25}Equations}{30}{section.25}%
+\contentsline {section}{Glossary}{31}{section*.2}%
